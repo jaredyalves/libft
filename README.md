@@ -1,53 +1,23 @@
 # Libft
 
-*Your very first own library*.
+*Your very first own library*
 
 This project is about coding a C library.
 It will contain a lot of general purpose functions your programs will rely upon.
 
-## Requirements
-
-Make sure you have the essentials to build C language.
-
-* Ubuntu/Debian
-
-```bash
-sudo apt install -y build-essential
-```
-
-* Fedora/RHEL
-
-```bash
-sudo dnf groupinstall -y "C Development Tools and Libraries"
-```
-
-* Arch Linux
-
-```bash
-sudo pacman -S --noconfirm base-devel
-```
-
-* Void Linux
-
-```bash
-sudo xbps-install -Sy base-devel
-```
-
 ## Build
+
+Clone the repository then run `make`.
 
 ```bash
 git clone https://github.com/jaredyalves/libft.git
-cd libft/project/
+cd libft
 make
 ```
 
 ## Usage
 
-Include when creating the executable.
-
-```make
--L ./libft -lft
-```
+Include the static library `libft.a` into your project.
 
 ## Contributing
 
