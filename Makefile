@@ -1,71 +1,76 @@
-NAME		:= libft.a
-NAME_BONUS	:= $(patsubst %.a,%_bonus.a,$(NAME))
+NAME			:=	libft.a
+NAME_BONUS		:=	$(patsubst %.a,%_bonus.a,$(NAME))
 
-SRCDIR		:= src
-OBJDIR		:= obj
-INCDIR		:= include
+SRCDIR			:=	src
+OBJDIR			:=	obj
+LIBDIR			:=
+INCDIR			:=	include
 
-SRCS		:= \
-	$(SRCDIR)/ft_atoi.c \
-	$(SRCDIR)/ft_bzero.c \
-	$(SRCDIR)/ft_calloc.c \
-	$(SRCDIR)/ft_isalnum.c \
-	$(SRCDIR)/ft_isalpha.c \
-	$(SRCDIR)/ft_isascii.c \
-	$(SRCDIR)/ft_isdigit.c \
-	$(SRCDIR)/ft_isprint.c \
-	$(SRCDIR)/ft_itoa.c \
-	$(SRCDIR)/ft_memchr.c \
-	$(SRCDIR)/ft_memcmp.c \
-	$(SRCDIR)/ft_memcpy.c \
-	$(SRCDIR)/ft_memmove.c \
-	$(SRCDIR)/ft_memset.c \
-	$(SRCDIR)/ft_putchar_fd.c \
-	$(SRCDIR)/ft_putendl_fd.c \
-	$(SRCDIR)/ft_putnbr_fd.c \
-	$(SRCDIR)/ft_putstr_fd.c \
-	$(SRCDIR)/ft_split.c \
-	$(SRCDIR)/ft_strchr.c \
-	$(SRCDIR)/ft_strdup.c \
-	$(SRCDIR)/ft_striteri.c \
-	$(SRCDIR)/ft_strjoin.c \
-	$(SRCDIR)/ft_strlcat.c \
-	$(SRCDIR)/ft_strlcpy.c \
-	$(SRCDIR)/ft_strlen.c \
-	$(SRCDIR)/ft_strmapi.c \
-	$(SRCDIR)/ft_strncmp.c \
-	$(SRCDIR)/ft_strnstr.c \
-	$(SRCDIR)/ft_strrchr.c \
-	$(SRCDIR)/ft_strtrim.c \
-	$(SRCDIR)/ft_substr.c \
-	$(SRCDIR)/ft_tolower.c \
-	$(SRCDIR)/ft_toupper.c \
+SRCS			:=
+SRCS			+=	$(SRCDIR)/ft_atoi.c
+SRCS			+=	$(SRCDIR)/ft_bzero.c
+SRCS			+=	$(SRCDIR)/ft_calloc.c
+SRCS			+=	$(SRCDIR)/ft_isalnum.c
+SRCS			+=	$(SRCDIR)/ft_isalpha.c
+SRCS			+=	$(SRCDIR)/ft_isascii.c
+SRCS			+=	$(SRCDIR)/ft_isdigit.c
+SRCS			+=	$(SRCDIR)/ft_isprint.c
+SRCS			+=	$(SRCDIR)/ft_itoa.c
+SRCS			+=	$(SRCDIR)/ft_memchr.c
+SRCS			+=	$(SRCDIR)/ft_memcmp.c
+SRCS			+=	$(SRCDIR)/ft_memcpy.c
+SRCS			+=	$(SRCDIR)/ft_memmove.c
+SRCS			+=	$(SRCDIR)/ft_memset.c
+SRCS			+=	$(SRCDIR)/ft_putchar_fd.c
+SRCS			+=	$(SRCDIR)/ft_putendl_fd.c
+SRCS			+=	$(SRCDIR)/ft_putnbr_fd.c
+SRCS			+=	$(SRCDIR)/ft_putstr_fd.c
+SRCS			+=	$(SRCDIR)/ft_split.c
+SRCS			+=	$(SRCDIR)/ft_strchr.c
+SRCS			+=	$(SRCDIR)/ft_strdup.c
+SRCS			+=	$(SRCDIR)/ft_striteri.c
+SRCS			+=	$(SRCDIR)/ft_strjoin.c
+SRCS			+=	$(SRCDIR)/ft_strlcat.c
+SRCS			+=	$(SRCDIR)/ft_strlcpy.c
+SRCS			+=	$(SRCDIR)/ft_strlen.c
+SRCS			+=	$(SRCDIR)/ft_strmapi.c
+SRCS			+=	$(SRCDIR)/ft_strncmp.c
+SRCS			+=	$(SRCDIR)/ft_strnstr.c
+SRCS			+=	$(SRCDIR)/ft_strrchr.c
+SRCS			+=	$(SRCDIR)/ft_strtrim.c
+SRCS			+=	$(SRCDIR)/ft_substr.c
+SRCS			+=	$(SRCDIR)/ft_tolower.c
+SRCS			+=	$(SRCDIR)/ft_toupper.c
+SRCS_BONUS		:=
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstadd_back.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstadd_front.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstclear.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstdelone.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstiter.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstlast.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstmap.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstnew.c
+SRCS_BONUS		+=	$(SRCDIR)/ft_lstsize.c
+OBJS			:=	$(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
+OBJS_BONUS		:=	$(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS_BONUS))
+INCS			:=	$(INCDIR)/libft.h
+INCS_BONUS		:=	$(INCDIR)/libft.h
 
-SRCS_BONUS	:= \
-	$(SRCDIR)/ft_lstadd_back.c \
-	$(SRCDIR)/ft_lstadd_front.c \
-	$(SRCDIR)/ft_lstclear.c \
-	$(SRCDIR)/ft_lstdelone.c \
-	$(SRCDIR)/ft_lstiter.c \
-	$(SRCDIR)/ft_lstlast.c \
-	$(SRCDIR)/ft_lstmap.c \
-	$(SRCDIR)/ft_lstnew.c \
-	$(SRCDIR)/ft_lstsize.c \
+CC				:=	/bin/cc
+INCLUDES		:=	-I$(INCDIR)
+CFLAGS			:=	-O3 -Wall -Werror -Wextra $(INCLUDES)
+LDFLAGS			:=
 
-OBJS		:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
-OBJS_BONUS	:= $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS_BONUS))
-INCS		:= $(INCDIR)/libft.h
+AR				:=	/bin/ar
+ARFLAGS			:=	-rcs
 
-CC			:= cc
-INCLUDES	:= -I$(INCDIR)
-CFLAGS		:= -O3 -Wall -Werror -Wextra $(INCLUDES)
-LDFLAGS		:=
+RM				:=	/bin/rm
+RMFLAGS			:=	-rf
 
-AR			:= ar
-ARFLAGS		:= -rcs
-
-RM			:= rm
-RMFLAGS		:= -rf
+COLOR_RESET		:=	\033[0m
+COLOR_CLEAN		:=	\033[0;33m
+COLOR_COMPILE	:=	\033[0;32m
+COLOR_LINK		:=	\033[0;34m
 
 .PHONY: all bonus clean fclean re
 
@@ -74,20 +79,26 @@ all: $(NAME)
 bonus: $(NAME_BONUS)
 
 $(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@printf "$(COLOR_LINK)Creating archive $@...$(COLOR_RESET)\n"
+	@$(AR) $(ARFLAGS) $@ $(OBJS)
 
 $(NAME_BONUS): $(OBJS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS_BONUS)
-	$(AR) $(ARFLAGS) $(NAME_BONUS) $(OBJS_BONUS)
+	@printf "$(COLOR_LINK)Creating bonus archive $@...$(COLOR_RESET)\n"
+	@$(AR) $(ARFLAGS) $(NAME_BONUS) $(OBJS_BONUS)
+	@printf "$(COLOR_LINK)Adding to $(NAME)...$(COLOR_RESET)\n"
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS_BONUS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCS)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCS) $(INCS_BONUS)
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@printf "$(COLOR_COMPILE)Compiling $<...$(COLOR_RESET)\n"
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	$(RM) $(RMFLAGS) $(OBJDIR)
+	@printf "$(COLOR_CLEAN)Cleaning up...$(COLOR_RESET)\n"
+	@$(RM) $(RMFLAGS) $(OBJDIR)
 
 fclean: clean
-	$(RM) $(RMFLAGS) $(NAME) $(NAME_BONUS)
+	@printf "$(COLOR_CLEAN)Removing $(NAME) and $(NAME_BONUS)...$(COLOR_RESET)\n"
+	@$(RM) $(RMFLAGS) $(NAME) $(NAME_BONUS)
 
 re: fclean all
